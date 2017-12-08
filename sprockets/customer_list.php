@@ -2,7 +2,7 @@
 //customer_list.php - shows a list of customer data
 ?>
 <?php include 'includes/config.php';?>
-<?php include 'includes/header.php';?>
+<?php get_header();?>
 <h1><?=$pageID?></h1>
 <?php
 $sql = "select * from test_Customers";
@@ -24,6 +24,8 @@ if(mysqli_num_rows($result) > 0)
         
         echo '<a href="customer_view.php?id=' . $row['CustomerID'] . '">' . $row['FirstName'] . '</a>';
         
+        echo '<img src="' . $config->virtual_path . '/uploads/customer' . dbOut($row['CustomerID']) . '_thumb.jpg" />';
+        
         echo '</p>';
     }    
 
@@ -38,4 +40,4 @@ if(mysqli_num_rows($result) > 0)
 @mysqli_close($iConn);
 
 ?>
-<?php include 'includes/footer.php';?>
+<?php get_footer();?>
